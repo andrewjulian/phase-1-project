@@ -1,4 +1,4 @@
-## Project Overview
+# Project Overview
 This project is meant to satisfy the Phase #1 Project requirements for the Flatiron School Software Engineering Curriculum. 
 
 # Objectives
