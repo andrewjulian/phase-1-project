@@ -5,6 +5,5 @@
 }
 
 .dropdown-menu-item:hover {
-    background-color: rgb(150, 78, 233);
-    color: black;
+    color: rgb(200, 164, 233);
 }
