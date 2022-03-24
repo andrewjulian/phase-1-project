@@ -3,3 +3,8 @@
     text-align: left;
     top: 40%;
 }
+
+.dropdown-menu-item:hover {
+    background-color: rgb(150, 78, 233);
+    color: black;
+}
