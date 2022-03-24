@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    //display pose based on selection from drop down
+    const dropDownButton = document.getElementById("nameDropDown")
+    console.log("Drop Down Text Content: ", dropDownButton)
+    dropDownButton.addEventListener("change", () => {
+        console.log("event working!")
+        console.log(dropDownButton.textContent)
+        return dropDownButton.textContent
+    })
     
 
 
