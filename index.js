@@ -12,12 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //create the english pose name options under quick search dropdown
     function poseOptionDisplay(data){
-        const dropdownList = document.getElementById("nameDropDown")
+        const dropdownList = document.getElementById("dropdownMenuButton1")
         for(let objKey in data){
-            const li = document.createElement("li")
-            li.classList.add("dropdown-menu-item")
-            li.textContent = data[objKey].english_name
-            dropdownList.appendChild(li)
+            const option = document.createElement("option")
+            option.classList.add("dropdown-menu-item")
+            option.textContent = data[objKey].english_name
+            option.setAttribute("value", data[objKey].english_name)
+            dropdownList.appendChild(option)
         }
     }
 
