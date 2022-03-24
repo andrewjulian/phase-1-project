@@ -10,10 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function poseOptionDisplay(data){
         const dropdownList = document.getElementById("nameDropDown")
         for(let objKey in data){
-            const li = document.createElement("li")
-            li.classList.add("dropdown-menu-item")
-            li.textContent = data[objKey].english_name
-            dropdownList.appendChild(li)
+            const button = document.createElement("button")
+            button.classList.add("dropdown-menu-item")
+            button.setAttribute("type", "button")
+            button.textContent = data[objKey].english_name
+            dropdownList.appendChild(button)
         }
     }
 
