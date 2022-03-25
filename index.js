@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const dropDownButton2 = document.getElementById("dropdownMenuButton2")
     dropDownButton2.addEventListener("change", (e) => {
+
+        document.getElementById("outputCardTitle").textContent = `Poses with the Movement Type:  ${e.target.value}`
         
         const items = document.querySelectorAll(".sequenceItem")
         items.forEach(element => element.remove()) 
