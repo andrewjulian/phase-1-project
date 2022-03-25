@@ -7,3 +7,8 @@
 .dropdown-menu-item:hover {
     color: rgb(200, 164, 233);
 }
+
+#poseImage {
+    max-width: 50%;
+    max-height: 50%;
+}

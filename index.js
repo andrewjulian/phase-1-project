@@ -22,14 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //display pose based on selection from drop down
-    const dropDownButton = document.getElementById("dropdownMenuButton2")
+    //search and return of objects when searched by Movement Type
+    const dropDownButton = document.getElementById("dropdownMenuButton1")
     console.log("Drop Down Text Content: ", dropDownButton)
     dropDownButton.addEventListener("change", (e) => {
-        console.log("event working!")
-        console.log(e.target.value)
-        return e.target.value
+        for(let objKey in poses){
+            if(poses[objKey].english_name == e.target.value){
+                document.getElementById("englishNameText").textContent = `English Name: ${poses[objKey].english_name}`
+                document.getElementById("sanskritNameText").textContent = `Sanskrit Name: ${poses[objKey].sanskrit_name}`
+                document.getElementById("movementTypeText").textContent = `Movement Type: ${poses[objKey].movement_type}`
+                document.getElementById("sequenceText").textContent = `Sequence: ${poses[objKey].sequence}`
+                document.getElementById("poseImage").src = poses[objKey].img_url
+            }
+        }
     })
+
+
 
 
 })
