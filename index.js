@@ -78,8 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        console.log("poses", poseSequence)
-
         poseSequence.forEach(element => {
             const li = document.createElement("li")
             li.textContent = element
