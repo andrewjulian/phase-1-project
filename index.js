@@ -22,9 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //search and return of objects when searched by Movement Type
+    //search and return of objects when searched pose name
     const dropDownButton = document.getElementById("dropdownMenuButton1")
-    console.log("Drop Down Text Content: ", dropDownButton)
     dropDownButton.addEventListener("change", (e) => {
         for(let objKey in poses){
             if(poses[objKey].english_name == e.target.value){
@@ -37,7 +36,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    //return the names english names of poses by movement type
+    
+    const dropDownButton2 = document.getElementById("dropdownMenuButton2")
+    dropDownButton2.addEventListener("change", (e) => {
+        
+        const items = document.querySelectorAll(".sequenceItem")
+        items.forEach(element => element.remove()) 
 
+        const poseSequence = []
+        
+        for(let objKey in poses){
+            if(poses[objKey].movement_type == e.target.value){
+                poseSequence.push(poses[objKey].english_name)
+            }
+        }
+
+        poseSequence.forEach(element => {
+            const li = document.createElement("li")
+            li.textContent = element
+            li.classList.add("sequenceItem")
+            sequenceCard.appendChild(li)
+        })
+    })
 
 
 })
