@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    //return the names english names of poses by movement type
-    
+    //display of items based on Movement Type
     const dropDownButton2 = document.getElementById("dropdownMenuButton2")
     dropDownButton2.addEventListener("change", (e) => {
 
@@ -46,13 +45,40 @@ document.addEventListener('DOMContentLoaded', () => {
         const items = document.querySelectorAll(".sequenceItem")
         items.forEach(element => element.remove()) 
 
-        const poseSequence = []
+        const movementType = []
         
         for(let objKey in poses){
             if(poses[objKey].movement_type == e.target.value){
+                movementType.push(poses[objKey].english_name)
+            }
+        }
+
+        movementType.forEach(element => {
+            const li = document.createElement("li")
+            li.textContent = element
+            li.classList.add("sequenceItem")
+            sequenceCard.appendChild(li)
+        })
+    })
+
+    //display of items based on Sequence Name
+    const dropDownButton3 = document.getElementById("dropdownMenuButton3")
+    dropDownButton3.addEventListener("change", (e) => {
+
+        document.getElementById("outputCardTitle").textContent = `Poses within the Sequence:  ${e.target.value}`
+        
+        const items = document.querySelectorAll(".sequenceItem")
+        items.forEach(element => element.remove()) 
+
+        const poseSequence = []
+        
+        for(let objKey in poses){
+            if(poses[objKey].sequence == e.target.value){
                 poseSequence.push(poses[objKey].english_name)
             }
         }
+
+        console.log("poses", poseSequence)
 
         poseSequence.forEach(element => {
             const li = document.createElement("li")
