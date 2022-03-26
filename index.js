@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+
+    //changes favorite status of pose with Save Pose to Favorites Button
     document.getElementById("savePoseBtn").addEventListener("click", () => {
         console.log("event listener working")
         console.log(poseNumber)
@@ -93,6 +95,31 @@ document.addEventListener('DOMContentLoaded', () => {
         
         for(let objKey in poses){
             if(poses[objKey].sequence == e.target.value){
+                poseSequence.push(poses[objKey].english_name)
+            }
+        }
+
+        poseSequence.forEach(element => {
+            const li = document.createElement("li")
+            li.textContent = element
+            li.classList.add("sequenceItem")
+            sequenceCard.appendChild(li)
+        })
+    })
+
+    //display of times that are selected as favorites
+    const dropDownButton4 = document.getElementById("dropdownMenuButton4")
+    dropDownButton4.addEventListener("change", (e) => {
+
+        document.getElementById("outputCardTitle").textContent = `Favorited Poses`
+        
+        const items = document.querySelectorAll(".sequenceItem")
+        items.forEach(element => element.remove()) 
+
+        const poseSequence = []
+        
+        for(let objKey in poses){
+            if(poses[objKey].favorite == "yes"){
                 poseSequence.push(poses[objKey].english_name)
             }
         }
