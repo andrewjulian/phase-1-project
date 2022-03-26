@@ -23,7 +23,8 @@
       "english_name": "Bow",
       "img_url": "https://www.dropbox.com/s/wizj5kwxvez4c0a/bow.svg?raw=1",
       "movement_type": "Backbend",
-      "sequence": "MISC"
+      "sequence": "MISC",
+      "favorite": "yes"
     },
     {
       "id": 4,
