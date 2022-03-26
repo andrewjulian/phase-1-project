@@ -3,12 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //get the pose data from the db
     let poses = []
-    fetch("http://localhost:3000/poses")
-    .then(response => response.json())
-    .then(data => {
-        poses = data
-        poseOptionDisplay(poses)
-    })
+    function updateLists(){
+        console.log("Get Request")
+        fetch("http://localhost:3000/poses")
+        .then(response => response.json())
+        .then(data => {
+            poses = data
+            poseOptionDisplay(poses)
+        })
+    }
+    
+    updateLists();
 
     //create the english pose name options under quick search dropdown
     function poseOptionDisplay(data){
@@ -23,12 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let poseNumber = -1
+    let poseFav = ""
 
     //search and return of objects when searched pose name
     const dropDownButton = document.getElementById("dropdownMenuButton1")
     dropDownButton.addEventListener("change", (e) => {
         for(let objKey in poses){
             if(poses[objKey].english_name == e.target.value){
+                poseFav = poses[objKey].favorite
                 poseNumber = poses[objKey].id
                 document.getElementById("englishNameText").textContent = `English Name: ${poses[objKey].english_name}`
                 document.getElementById("sanskritNameText").textContent = `Sanskrit Name: ${poses[objKey].sanskrit_name}`
@@ -42,25 +49,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //changes favorite status of pose with Save Pose to Favorites Button
     document.getElementById("savePoseBtn").addEventListener("click", () => {
-        console.log("event listener working")
-        console.log(poseNumber)
-        fetch(`http://localhost:3000/poses/${poseNumber}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            }, 
-            body: JSON.stringify(
-                {
-                    "favorite": "yes"
-                }
-            )
-        })
+
+        if(poseFav == "no") {
+            console.log("event listener working to change to yes")
+            console.log(poseNumber)
+
+            fetch(`http://localhost:3000/poses/${poseNumber}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                }, 
+                body: JSON.stringify(
+                    {
+                        "favorite": "yes"
+                    }
+                )
+            })
+        } else if (poseFav == "yes") {
+            console.log("event listener working to change to no")
+            console.log(poseNumber)
+
+            fetch(`http://localhost:3000/poses/${poseNumber}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                }, 
+                body: JSON.stringify(
+                    {
+                        "favorite": "no"
+                    }
+                )
+            })
+        }
+        updateLists();
     })
 
     //display of items based on Movement Type
     const dropDownButton2 = document.getElementById("dropdownMenuButton2")
     dropDownButton2.addEventListener("change", (e) => {
-
+        
         document.getElementById("outputCardTitle").textContent = `Poses with the Movement Type:  ${e.target.value}`
         
         const items = document.querySelectorAll(".sequenceItem")
@@ -131,6 +158,5 @@ document.addEventListener('DOMContentLoaded', () => {
             sequenceCard.appendChild(li)
         })
     })
-
 
 })
