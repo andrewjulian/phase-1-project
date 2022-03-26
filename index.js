@@ -22,11 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let poseNumber = -1
+
     //search and return of objects when searched pose name
     const dropDownButton = document.getElementById("dropdownMenuButton1")
     dropDownButton.addEventListener("change", (e) => {
         for(let objKey in poses){
             if(poses[objKey].english_name == e.target.value){
+                poseNumber = poses[objKey].id
                 document.getElementById("englishNameText").textContent = `English Name: ${poses[objKey].english_name}`
                 document.getElementById("sanskritNameText").textContent = `Sanskrit Name: ${poses[objKey].sanskrit_name}`
                 document.getElementById("movementTypeText").textContent = `Movement Type: ${poses[objKey].movement_type}`
@@ -34,6 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById("poseImage").src = poses[objKey].img_url
             }
         }
+    })
+
+    document.getElementById("savePoseBtn").addEventListener("click", () => {
+        console.log("event listener working")
+        console.log(poseNumber)
+        fetch(`http://localhost:3000/poses/${poseNumber}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify(
+                {
+                    "favorite": "yes"
+                }
+            )
+        })
     })
 
     //display of items based on Movement Type
