@@ -1,19 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', () => { 
 
-    //get the pose data from the db
     let poses = []
-    function updateLists(){
-        console.log("Get Request")
-        fetch("http://localhost:3000/poses")
-        .then(response => response.json())
-        .then(data => {
-            poses = data
-            poseOptionDisplay(poses)
-        })
-    }
-    
-    updateLists();
+
+    //get the pose data from the db
+    fetch("http://localhost:3000/poses")
+    .then(response => response.json())
+    .then(data => {
+        poses = data
+        poseOptionDisplay(poses)
+    })
+
 
     //create the english pose name options under quick search dropdown
     function poseOptionDisplay(data){
@@ -46,14 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-
     //changes favorite status of pose with Save Pose to Favorites Button
     document.getElementById("savePoseBtn").addEventListener("click", () => {
-
         if(poseFav == "no") {
-            console.log("event listener working to change to yes")
-            console.log(poseNumber)
-
             fetch(`http://localhost:3000/poses/${poseNumber}`, {
                 method: "PATCH",
                 headers: {
@@ -65,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 )
             })
-        } else if (poseFav == "yes") {
-            console.log("event listener working to change to no")
-            console.log(poseNumber)
+            .then(response => response.json())
+            .then(data => poses = data)
 
+        } else if (poseFav == "yes") {
             fetch(`http://localhost:3000/poses/${poseNumber}`, {
                 method: "PATCH",
                 headers: {
@@ -80,8 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 )
             })
+            .then(response => response.json())
+            .then(data => poses = data)
         }
-        updateLists();
     })
 
     //display of items based on Movement Type
