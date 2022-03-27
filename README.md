@@ -25,7 +25,13 @@ Use json-server in your project to persist your app's interactivity.
 # Usage and Functions
 This webapp will allow the user to look up yoga poses based on a set of user provide criteria and save the poses to to create a practice sequence that is saved to the database for future recall.
 
+Poses and associated information are stored in the db.json file. The contents of this file are used to populate the features on the page. This can either be populating information about a selected pose or a created list of poses that meet a specific search criteria. 
+
+All searches are done using input created by the selection of an option in a dropdown menu. These menus are either populated manually (such as in the movement type and sequence drop-downs) or populated via an algorithm that includes the addition of new HTML elements. 
+
+Other features include the opportunity to "favorite" a selected pose in the Quick Search card, which then changes the data in the database for that pose and ensures that it is included in the displayed list of poses that meet that search criteria via the "Selected Favorites" dropdown menu. 
+
 # Sources and Inspiration
-My wife is working on her Yoga Teacher Training (YTT) and having an on hand reference to search for poses based on different criteria will help her to create unique classes that still follow traditional sequences. 
+My wife is working on her Yoga Teacher Training (YTT) and having an on hand reference to search for poses based on different criteria will help her to create unique classes that still follow traditional sequences. It is also common for students to not recall the specific details of a pose after a class and can use this app to look up that information. 
 
 # License
