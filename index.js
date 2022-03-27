@@ -3,13 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let poses = []
 
-    //get the pose data from the db
-    fetch("http://localhost:3000/poses")
-    .then(response => response.json())
-    .then(data => {
-        poses = data
-        poseOptionDisplay(poses)
-    })
+    function fetchPoses(){
+        //get the pose data from the db
+        fetch("http://localhost:3000/poses")
+        .then(response => response.json())
+        .then(data => {
+            poses = data
+            poseOptionDisplay(poses)
+        })
+    }   
+
+    fetchPoses();
 
 
     //create the english pose name options under quick search dropdown
@@ -30,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //search and return of objects when searched pose name
     const dropDownButton = document.getElementById("dropdownMenuButton1")
     dropDownButton.addEventListener("change", (e) => {
+        console.log("pose button event listener")
         for(let objKey in poses){
             if(poses[objKey].english_name == e.target.value){
                 poseFav = poses[objKey].favorite
@@ -45,6 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //changes favorite status of pose with Save Pose to Favorites Button
     document.getElementById("savePoseBtn").addEventListener("click", () => {
+
+        console.log("save pose to favorites button event listener")
+
         if(poseFav == "no") {
             fetch(`http://localhost:3000/poses/${poseNumber}`, {
                 method: "PATCH",
@@ -80,6 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //display of items based on Movement Type
     const dropDownButton2 = document.getElementById("dropdownMenuButton2")
     dropDownButton2.addEventListener("change", (e) => {
+
+        console.log("movement type button event listener")
+        //fetchPoses();
         
         document.getElementById("outputCardTitle").textContent = `Poses with the Movement Type:  ${e.target.value}`
         
@@ -106,6 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropDownButton3 = document.getElementById("dropdownMenuButton3")
     dropDownButton3.addEventListener("change", (e) => {
 
+        console.log("sequence button event listener")
+
         document.getElementById("outputCardTitle").textContent = `Poses within the Sequence:  ${e.target.value}`
         
         const items = document.querySelectorAll(".sequenceItem")
@@ -130,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //display of times that are selected as favorites
     const dropDownButton4 = document.getElementById("dropdownMenuButton4")
     dropDownButton4.addEventListener("change", (e) => {
+
+        console.log("favorite button event listener")
 
         document.getElementById("outputCardTitle").textContent = `Favorited Poses`
         
