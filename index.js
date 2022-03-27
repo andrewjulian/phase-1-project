@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropDownButton = document.getElementById("dropdownMenuButton1")
     dropDownButton.addEventListener("change", (e) => {
         console.log("pose button event listener")
+        fetchPoses()
         for(let objKey in poses){
             if(poses[objKey].english_name == e.target.value){
                 poseFav = poses[objKey].favorite
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 )
             })
             .then(response => response.json())
-            .then(data => poses = data)
+            .then(data => console.log(data))
 
         } else if (poseFav == "yes") {
             fetch(`http://localhost:3000/poses/${poseNumber}`, {
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 )
             })
             .then(response => response.json())
-            .then(data => poses = data)
+            .then(data => console.log(data))
         }
     })
 
@@ -90,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dropDownButton2.addEventListener("change", (e) => {
 
         console.log("movement type button event listener")
-        //fetchPoses();
+        fetchPoses();
         
         document.getElementById("outputCardTitle").textContent = `Poses with the Movement Type:  ${e.target.value}`
         
@@ -118,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dropDownButton3.addEventListener("change", (e) => {
 
         console.log("sequence button event listener")
+        fetchPoses()
 
         document.getElementById("outputCardTitle").textContent = `Poses within the Sequence:  ${e.target.value}`
         
@@ -145,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dropDownButton4.addEventListener("change", (e) => {
 
         console.log("favorite button event listener")
+        fetchPoses()
 
         document.getElementById("outputCardTitle").textContent = `Favorited Poses`
         
