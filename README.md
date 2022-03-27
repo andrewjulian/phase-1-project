@@ -37,4 +37,6 @@ Other features include the opportunity to "favorite" a selected pose in the Quic
 # Sources and Inspiration
 My wife is working on her Yoga Teacher Training (YTT) and having an on hand reference to search for poses based on different criteria will help her to create unique classes that still follow traditional sequences. It is also common for students to not recall the specific details of a pose after a class and can use this app to look up that information. 
 
+Screenshots of code segments are all owned by the creator (Andrew Julian) and the image used as the main banner carries CC persmission for reuse and accessed via Canva. 
+
 # License
