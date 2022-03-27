@@ -22,7 +22,10 @@ Follow good coding practices. Keep your code DRY (Do not repeat yourself) by uti
 ### Stretch Goals
 Use json-server in your project to persist your app's interactivity.
 
-# Usage and Functions
+# Usage and Setup
+This app is designed to run using the included db.json file. In your terminal, make sure to run the line json-server --watch db.json in order to begin use of the local server. Without this, the pose information will not populate, nor will the functions work properly as they reference the data using fetch() get and patch commands. 
+
+# Functions
 This webapp will allow the user to look up yoga poses based on a set of user provide criteria and save the poses to to create a practice sequence that is saved to the database for future recall.
 
 Poses and associated information are stored in the db.json file. The contents of this file are used to populate the features on the page. This can either be populating information about a selected pose or a created list of poses that meet a specific search criteria. 
