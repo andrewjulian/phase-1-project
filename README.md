@@ -1,5 +1,5 @@
 # Project Overview
-This project is meant to satisfy the Phase #1 Project requirements for the Flatiron School Software Engineering Curriculum. 
+This project is meant to satisfy the Phase #1 Project requirements for the Flatiron School Software Engineering Curriculum. Primary work was done during the month of March 2022. Further development of this web application is not planned at this time. 
 
 # Objectives
 - Design and architect features across a frontend
