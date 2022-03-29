@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dropDownButton3.addEventListener("change", (e) => {
 
         console.log("sequence button event listener")
-        fetchPoses()
+        //fetchPoses()
 
         document.getElementById("outputCardTitle").textContent = `Poses within the Sequence:  ${e.target.value}`
         
