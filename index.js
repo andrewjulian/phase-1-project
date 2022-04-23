@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchPoses();
 
-
-    //create the english pose name options under quick search dropdown
     function poseOptionDisplay(data){
         const dropdownList = document.getElementById("dropdownMenuButton1")
         for(let objKey in data){
@@ -31,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let poseNumber = -1
     let poseFav = ""
 
-    //search and return of objects when searched pose name
     const dropDownButton = document.getElementById("dropdownMenuButton1")
     dropDownButton.addEventListener("change", (e) => {
         console.log("pose button event listener")
@@ -49,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    //changes favorite status of pose with Save Pose to Favorites Button
     document.getElementById("savePoseBtn").addEventListener("click", () => {
 
         console.log("save pose to favorites button event listener")
@@ -86,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    //display of items based on Movement Type
     const dropDownButton2 = document.getElementById("dropdownMenuButton2")
     dropDownButton2.addEventListener("change", (e) => {
 
@@ -114,12 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
-    //display of items based on Sequence Name
     const dropDownButton3 = document.getElementById("dropdownMenuButton3")
     dropDownButton3.addEventListener("change", (e) => {
 
         console.log("sequence button event listener")
-        //fetchPoses()
 
         document.getElementById("outputCardTitle").textContent = `Poses within the Sequence:  ${e.target.value}`
         
@@ -142,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
-    //display of times that are selected as favorites
     const dropDownButton4 = document.getElementById("dropdownMenuButton4")
     dropDownButton4.addEventListener("change", (e) => {
 
